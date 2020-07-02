@@ -1,6 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
+  "prefix": "/api/v1",
   "public": "../public/",
   "paginate": {
     "default": 10,
@@ -28,5 +29,5 @@
       "passwordField": "password"
     }
   },
-  "mysql": "mysql://root:@localhost:3306/api"
+  "mysql": "mysql://tracker:tracker@mysql:3306/tracker"
 }

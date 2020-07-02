@@ -1,0 +1,48 @@
+version: '3'
+services:
+  api:
+    image: node
+    user: node
+    working_dir: /home/node/app
+    links:
+      - mysql
+      - redis_host
+    volumes:
+      - ./api:/home/node/app:delegated
+      - ./api/node_modules:/home/node/app/node_modules:cached
+    environment:
+      - NODE_ENV=development
+      - QUEUE_WORKER=false
+    ports:
+      - '3335:3030'
+    command: './docker/init.sh'
+  queue:
+    image: node
+    user: node
+    working_dir: /home/node/app
+    links:
+      - mysql
+      - redis_host
+    volumes:
+      - ./api:/home/node/app:delegated
+      - ./api/node_modules:/home/node/app/node_modules:cached
+    environment:
+      - NODE_ENV=development
+      - QUEUE_WORKER=true
+    command: './docker/init.sh'
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=tracker
+      - MYSQL_PASSWORD=tracker
+      - MYSQL_DATABASE=tracker
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql:cached
+    ports:
+      - '3336:3306'
+  redis_host:
+    image: redis
+    ports:
+      - '3337:6379'
