@@ -15,11 +15,13 @@ import appHooks from './app.hooks'
 import channels from './channels'
 import authentication from './authentication'
 import sequelize from './sequelize'
+import dotenv from 'dotenv'
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers())
 
 // Load app configuration
+dotenv.config()
 app.configure(configuration())
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet())

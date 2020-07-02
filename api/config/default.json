@@ -25,6 +25,5 @@
       "usernameField": "email",
       "passwordField": "password"
     }
-  },
-  "mysql": "mysql://tracker:tracker@mysql:3306/tracker"
+  }
 }

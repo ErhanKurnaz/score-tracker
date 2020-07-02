@@ -5,7 +5,7 @@ services:
     user: node
     working_dir: /home/node/app
     links:
-      - mysql
+      - db
       - redis_host
     volumes:
       - ./api:/home/node/app:delegated
@@ -21,7 +21,7 @@ services:
     user: node
     working_dir: /home/node/app
     links:
-      - mysql
+      - db
       - redis_host
     volumes:
       - ./api:/home/node/app:delegated
@@ -31,7 +31,7 @@ services:
       - QUEUE_WORKER=true
     command: './docker/init.sh'
 
-  mysql:
+  db:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=root
