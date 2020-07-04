@@ -3,7 +3,6 @@ import { Application } from './declarations'
 
 export default function (app: Application) {
     const env = process.env
-    // mysql://tracker:tracker@mysql:3306/tracker
     const sequelize = new Sequelize(`${env.DB_HOST}://${env.DB_USERNAME}:${env.DB_PASSWORD}@db:${env.DB_PORT}/${env.DB_DATABASE}`, {
         dialect: 'mysql',
         logging: false,

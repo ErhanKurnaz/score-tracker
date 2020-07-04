@@ -23,6 +23,9 @@ export default function (app: Application) {
 
     // Get our initialized service so that we can register hooks
     const service = app.service('users')
+    service.on('created', user => {
+        console.log(user)
+    })
 
     service.hooks(hooks)
 }

@@ -17,6 +17,10 @@ export default function (app: Application) {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
         },
         {
             hooks: {
@@ -27,8 +31,7 @@ export default function (app: Application) {
         }
     )
 
-    // eslint-disable-next-line no-unused-vars
-    ;(users as any).associate = function (models: any) {
+    ;(users as any).associate = (models: any) => {
         // Define associations here
         // See http://docs.sequelizejs.com/en/latest/docs/associations/
     }
